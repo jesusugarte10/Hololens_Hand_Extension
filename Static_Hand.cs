@@ -8,7 +8,7 @@ using Microsoft.MixedReality.Toolkit.Input;
 public class Static_Hand : MonoBehaviour {
    public GameObject marker;
    public float shift = 1f;
-   public float k = 1;
+   public float k = 5;
    private float current;
    private Vector3 scale;
    public GameObject parent;
@@ -541,7 +541,7 @@ public class Static_Hand : MonoBehaviour {
 
       float distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
 
-      if (distance > extend / 2) {
+      if (distance > extend - (extend - shrink) / 2) {
          shift = k * (distance - extend / 2) * Mathf.Exp(2);
       }
    }

@@ -13,7 +13,7 @@ public class Fake_Hand : MonoBehaviour {
    public GameObject marker4;
 
    public float shift = 3f;
-   public float k = 1;
+   public float k = 5;
    private float current;
    private Vector3 scale;
    private float scalefactorGrow;
@@ -179,9 +179,9 @@ public class Fake_Hand : MonoBehaviour {
    void PositionControl(float extend, float shrink) {
 
       float distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
-      
-      if (distance > extend/2) {
-         shift =  k*(distance - extend/2 )*Mathf.Exp(2);
+
+      if (distance > extend - (extend - shrink) / 2) {
+         shift = k * (distance - extend / 2) * Mathf.Exp(2);
       }
    }
 
@@ -203,12 +203,6 @@ public class Fake_Hand : MonoBehaviour {
                palmObject.transform.localScale = new Vector3(scalefactorShrink, scalefactorShrink, scalefactorShrink);
                palmObject2.transform.localScale = new Vector3(scalefactorShrink, scalefactorShrink, scalefactorShrink);
             }
-
-            if(shift < 1f) {
-               palmObject.transform.localScale = new Vector3(1f, 1f, 1f);
-               palmObject2.transform.localScale = new Vector3(1f, 1f, 1f);
-            }
-
             current = shift;
          }
 

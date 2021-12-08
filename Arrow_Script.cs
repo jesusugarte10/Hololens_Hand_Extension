@@ -12,7 +12,7 @@ public class Arrow_Script : MonoBehaviour {
    public GameObject marker4;
 
    public float shift = 3f;
-   public float k = 1;
+   public float k = 5;
    private float current;
    private Vector3 scale;
    private float scalefactorGrow;
@@ -143,7 +143,8 @@ public class Arrow_Script : MonoBehaviour {
 
       float distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
 
-      if (distance > extend / 2) {
+
+      if (distance > extend - (extend - shrink) / 2) {
          shift = k * (distance - extend / 2) * Mathf.Exp(2);
       }
    }
