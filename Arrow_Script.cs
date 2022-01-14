@@ -7,7 +7,15 @@ using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.Input;
 
 public class Arrow_Script : MonoBehaviour {
-   public GameObject marker;
+
+    private GameObject temp;
+
+
+
+    public GameObject splineParent;
+   private GameObject splinePoint;
+
+    public GameObject marker;
    public GameObject marker2;
    public GameObject marker4;
 
@@ -37,10 +45,10 @@ public class Arrow_Script : MonoBehaviour {
    GameObject palmObject2;
 
    MixedRealityPose virtualHand;
-   
 
-   // Start is called before the first frame update
-   void Start() {
+
+    // Start is called before the first frame update
+    void Start() {
       current = shift;
       palmObject = Instantiate(marker, this.transform);
       palmObject2 = Instantiate(marker2, this.transform);
@@ -177,12 +185,21 @@ public class Arrow_Script : MonoBehaviour {
 
       }
    }
-
-
-   void Draw() {
+    
+    void Draw() {
       if (IsPinching()) {
-         Destroy(Instantiate(marker4, palmObject.transform.position, Quaternion.identity),20);
-      }
+            splinePoint = Instantiate(marker4, palmObject.transform.position, Quaternion.identity);
+            //splinePoint.transform.parent = splineParent.transform;
+            splinePoint.name = $"{transform.childCount+1}";
+            Destroy(splinePoint, 20);
+            if(temp != null)
+            {
+
+                Debug.DrawLine(splinePoint.transform.position, temp.transform.position, Color.green,Time.deltaTime, false);
+                Debug.Log("HERE Drawing");
+            }
+            temp = splinePoint;
+        }
    }
 
    bool IsPinchingLeft() {
