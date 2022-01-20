@@ -12,7 +12,7 @@ public class Fake_Hand : MonoBehaviour {
    public GameObject marker3;
    public GameObject marker4;
 
-   public float shift = 3f;
+   public static float shift = 3f;
    public float k = 5;
    private float current;
    private Vector3 scale;
@@ -130,7 +130,7 @@ public class Fake_Hand : MonoBehaviour {
 
    void Draw() {
       if (IsPinching()) {
-         Destroy(Instantiate(marker4, palmObject.transform.position, Quaternion.identity), 20);
+         //Destroy(Instantiate(marker4, palmObject.transform.position, Quaternion.identity), 20);
       }
    }
 

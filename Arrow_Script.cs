@@ -8,18 +8,15 @@ using Microsoft.MixedReality.Toolkit.Input;
 
 public class Arrow_Script : MonoBehaviour {
 
-    private GameObject temp;
-
-
-
-    public GameObject splineParent;
+   private GameObject temp;
+   public GameObject splineParent;
    private GameObject splinePoint;
 
     public GameObject marker;
    public GameObject marker2;
    public GameObject marker4;
 
-   public float shift = 3f;
+   public static float shift = 3f;
    public float k = 5;
    private float current;
    private Vector3 scale;
@@ -188,17 +185,16 @@ public class Arrow_Script : MonoBehaviour {
     
     void Draw() {
       if (IsPinching()) {
-            splinePoint = Instantiate(marker4, palmObject.transform.position, Quaternion.identity);
+            //splinePoint = Instantiate(marker4, palmObject.transform.position, Quaternion.identity);
             //splinePoint.transform.parent = splineParent.transform;
-            splinePoint.name = $"{transform.childCount+1}";
-            Destroy(splinePoint, 20);
-            if(temp != null)
-            {
-
-                Debug.DrawLine(splinePoint.transform.position, temp.transform.position, Color.green,Time.deltaTime, false);
-                Debug.Log("HERE Drawing");
-            }
-            temp = splinePoint;
+            //splinePoint.name = $"{transform.childCount+1}";
+            //Destroy(splinePoint, 20);
+            //if(temp != null)
+            //{
+                //Debug.DrawLine(splinePoint.transform.position, temp.transform.position, Color.green,Time.deltaTime, false);
+                //Debug.Log("HERE Drawing");
+            //}
+            //temp = splinePoint;
         }
    }
 

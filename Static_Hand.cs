@@ -7,7 +7,7 @@ using Microsoft.MixedReality.Toolkit.Input;
 
 public class Static_Hand : MonoBehaviour {
    public GameObject marker;
-   public float shift = 1f;
+   public static float shift = 1f;
    public float k = 5;
    private float current;
    private Vector3 scale;
@@ -592,7 +592,7 @@ public class Static_Hand : MonoBehaviour {
 
    void Draw() {
       if (IsPinching()) {
-         Destroy(Instantiate(marker4, IndexTip.transform.position, Quaternion.identity), 20);
+         //Destroy(Instantiate(marker4, IndexTip.transform.position, Quaternion.identity), 20);
       }
    }
 
