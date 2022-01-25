@@ -74,10 +74,13 @@ public class Spline : MonoBehaviour
         GameObject line = GameObject.Find("Right_ShellHandRayPointer(Clone)");
         
         if(GameObject.Find("Arrow_Condition"))
-            return line.transform.position + line.transform.forward * Arrow_Script.shift;
-        else if(GameObject.Find("SemiReal_Hand"))
+            return new Vector3(line.transform.position.x, line.transform.position.y - 0.4f, line.transform.position.z) + line.transform.forward * Arrow_Script.shift;
+        else if(GameObject.Find("Point_Cloud"))
             return line.transform.position + line.transform.forward * Static_Hand.shift;
         else
-            return line.transform.position + line.transform.forward * Fake_Hand.shift;
+            return line.transform.position + line.transform.forward * (Fake_Hand.shift );
+
+        //new Vector3(line.transform.position.x, line.transform.position.y, line.transform.position.z);
+        //
     }
 }

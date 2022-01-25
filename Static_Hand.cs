@@ -532,7 +532,7 @@ public class Static_Hand : MonoBehaviour {
             shift += 0.01f;
       }
       else if (distance < shrink) {
-         if (shift > 0)
+          if (shift > 0.5) // Modify this for how far you want the object to be
             shift -= 0.01f;
       }
    }

@@ -139,7 +139,7 @@ public class Arrow_Script : MonoBehaviour {
             shift += 0.01f;
       }
       else if (distance < shrink) {
-         if (shift > 0.3)
+         if (shift > 0.8) // Modify this for how far you want the object to be
             shift -= 0.01f;
       }
    }
@@ -147,7 +147,6 @@ public class Arrow_Script : MonoBehaviour {
    void PositionControl(float extend, float shrink) {
 
       float distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
-
 
       if (distance > extend - (extend - shrink) / 2) {
          shift = k * (distance - extend / 2) * Mathf.Exp(2);
@@ -159,7 +158,9 @@ public class Arrow_Script : MonoBehaviour {
       if (scaleControl) {
          if (current != shift) {
             scalefactorGrow = palmObject.transform.localScale.x + 0.02f;
-            scalefactorShrink = palmObject.transform.localScale.x - 0.02f;
+
+            if(palmObject.transform.localScale.x >=1f)
+                scalefactorShrink = palmObject.transform.localScale.x - 0.02f;
 
             // increase size
             if (current < shift) {
@@ -172,6 +173,7 @@ public class Arrow_Script : MonoBehaviour {
                palmObject2.transform.localScale = new Vector3(scalefactorShrink, scalefactorShrink, scalefactorShrink);
             }
 
+            //reset
             if (shift < 1f) {
                palmObject.transform.localScale = new Vector3(1f, 1f, 1f);
                palmObject2.transform.localScale = new Vector3(1f, 1f, 1f);

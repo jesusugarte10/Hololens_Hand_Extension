@@ -171,7 +171,7 @@ public class Fake_Hand : MonoBehaviour {
             shift += 0.01f;
       }
       else if (distance < shrink) {
-         if (shift > 0)
+          if (shift > 0.5) // Modify this for how far you want the object to be
             shift -= 0.01f;
       }
    }
@@ -191,12 +191,14 @@ public class Fake_Hand : MonoBehaviour {
          
          if (current != shift) {
             scalefactorGrow = palmObject.transform.localScale.x + 0.02f;
+
+         if (palmObject.transform.localScale.x >= 1f)
             scalefactorShrink = palmObject.transform.localScale.x - 0.02f;
-         
+
             // increase size
             if (current < shift) {
-               palmObject.transform.localScale = new Vector3(scalefactorGrow, scalefactorGrow, scalefactorGrow);
-               palmObject2.transform.localScale = new Vector3(scalefactorGrow, scalefactorGrow, scalefactorGrow);
+            palmObject.transform.localScale = new Vector3(scalefactorGrow, scalefactorGrow, scalefactorGrow);
+            palmObject2.transform.localScale = new Vector3(scalefactorGrow, scalefactorGrow, scalefactorGrow);
             }
             //decrease size 
             if (current > shift) {
