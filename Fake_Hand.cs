@@ -173,7 +173,7 @@ public class Fake_Hand : MonoBehaviour {
       //Shift
       float distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
       if (distance > extend){
-         if (shift < 10)
+         //if (shift < 50)
             shift += 0.01f;
       }
       else if (distance < shrink) {
@@ -189,9 +189,10 @@ public class Fake_Hand : MonoBehaviour {
 
         if (dCurr > shrink) {
             //Debug.Log("in here");
-            shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            //shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            shift = (k * Mathf.Pow((dCurr * 100 - shrink * 100), 2)) / 100;
         }
-
+        
     }
 
    void Scaling() {

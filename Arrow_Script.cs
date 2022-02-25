@@ -103,10 +103,12 @@ public class Arrow_Script : MonoBehaviour {
 
             //position
             GameObject line = GameObject.Find("Left_ShellHandRayPointer(Clone)");
-                //palmObject2.transform.position = line.transform.position + line.transform.forward * shift;
-                palmObject2.transform.position = virtualHand.Position + virtualHand.Forward * shift;
-                //Update Rotation
-                Quaternion rot = virtualHand.Rotation;
+
+            //palmObject2.transform.position = line.transform.position + line.transform.forward * shift;
+            palmObject2.transform.position = virtualHand.Position + virtualHand.Forward * shift;
+
+            //Update Rotation
+            Quaternion rot = virtualHand.Rotation;
             palmObject2.transform.rotation = rot;
 
             palmObject2.transform.eulerAngles = new Vector3(
@@ -152,10 +154,11 @@ public class Arrow_Script : MonoBehaviour {
         
         //distance = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
         dCurr = Vector3.Distance(virtualHand.Position, Camera.main.transform.position);
-
+        
         if (dCurr > shrink) {
             //Debug.Log("in here");
-            shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            //shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            shift = (k * Mathf.Pow((dCurr*100 - shrink*100), 2))/100;
         }
 
 

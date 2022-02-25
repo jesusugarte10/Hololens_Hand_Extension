@@ -559,7 +559,8 @@ public class Static_Hand : MonoBehaviour {
 
         if (dCurr > shrink) {
             //Debug.Log("in here");
-            shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            //shift = k * Mathf.Pow((dCurr - (shrink)), 2);
+            shift = (k * Mathf.Pow((dCurr * 100 - shrink * 100), 2)) / 100;
         }
 
     }
